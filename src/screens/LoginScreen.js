@@ -3,8 +3,8 @@ import {
   View,
   TouchableWithoutFeedback,
   Keyboard,
+  StyleSheet,
 } from "react-native";
-import Background from "../components/Background";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
 import Button from "../components/Button";
@@ -36,40 +36,45 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <Background>
-      <BackButton goBack={navigation.goBack} />
-      <TouchableWithoutFeedback onPress={handlerKeyboard}>
-        <View>
-          <Logo />
-        </View>
-      </TouchableWithoutFeedback>
-      <Header>Welcome back.</Header>
-      <TextInput
-        label="Email"
-        returnKeyType="next"
-        value={email.value}
-        onChangeText={(text) => setEmail({ value: text, error: "" })}
-        error={!!email.error}
-        errorText={email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-      />
-      <TextInput
-        label="Password"
-        returnKeyType="done"
-        value={password.value}
-        onChangeText={(text) => setPassword({ value: text, error: "" })}
-        error={!!password.error}
-        errorText={password.error}
-        secureTextEntry
-      />
-      <Button mode="contained" onPress={onLoginPressed}>
-        Login
-      </Button>
-    </Background>
+    <TouchableWithoutFeedback onPress={handlerKeyboard}>
+      <View style={styles.waper}>
+        <BackButton goBack={navigation.goBack} />
+        <Logo />
+        <Header title="Welcome back."></Header>
+        <TextInput
+          label="Email"
+          returnKeyType="next"
+          value={email.value}
+          onChangeText={(text) => setEmail({ value: text, error: "" })}
+          error={!!email.error}
+          errorText={email.error}
+          autoCapitalize="none"
+          autoCompleteType="email"
+          textContentType="emailAddress"
+          keyboardType="email-address"
+        />
+        <TextInput
+          label="Password"
+          returnKeyType="done"
+          value={password.value}
+          onChangeText={(text) => setPassword({ value: text, error: "" })}
+          error={!!password.error}
+          errorText={password.error}
+          secureTextEntry
+        />
+        <Button mode="contained" onPress={onLoginPressed}>
+          Login
+        </Button>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
-
+const styles = StyleSheet.create({
+  waper: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+  },
+});
 export default LoginScreen;

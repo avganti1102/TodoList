@@ -1,17 +1,58 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
-import { Text } from 'react-native-paper'
-import { theme } from '../core/theme'
+import React from 'react';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import BackButton from './BackButton';
 
-const Header = (props) => <Text style={styles.header} {...props} />
+
+function Header({ title, onBack }) {
+    const checkVisibleBackBtn = () => {
+        if(onBack === null) {
+            return null;
+        }
+
+        return (
+            // style={styles.backBtn}
+            <TouchableOpacity onPress={onBack}> 
+                <BackButton></BackButton>
+            </TouchableOpacity>
+        )
+    }
+
+    return (
+        <SafeAreaView style={styles.safeAreaView}>
+            <View style={styles.container}>
+                {checkVisibleBackBtn}
+                <Text style={styles.title}>
+                    {title}
+                </Text>
+            </View>
+        </SafeAreaView>
+    )
+}
+
+Header.defaultProps = {
+    title: 'Header',
+    onBack: null
+}
 
 const styles = StyleSheet.create({
-  header: {
-    fontSize: 21,
-    color: theme.colors.primary,
-    fontWeight: 'bold',
-    paddingVertical: 12,
-  },
+    safeAreaView: {
+        backgroundColor: '#fff'
+    },
+    container: {
+        width: '100%',
+        height: 60,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    title: {
+        fontSize: 30,
+    },
+    // backBtn: {
+    //     position: 'absolute',
+    //     top: 20,
+    //     left: 20
+    // },
 })
 
-export default Header
+export default Header;

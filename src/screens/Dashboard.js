@@ -5,20 +5,22 @@ import {
 	StyleSheet,
 	FlatList,
 	TouchableOpacity,
-	Alert,
 } from 'react-native';
 import Header from "../components/Header";
 import data from "../services/TodoList";
 
-function ItemList({ data }) {
-  	return (
-		<TouchableOpacity onPress={() => Alert.alert('Buy')}>
+
+function ItemList({ navigation, data }) {
+	return (
+		<TouchableOpacity onPress={() => navigation.navigate('Detail', {
+			idTodo: data.id
+		})}>
 			<View style={styles.container}>
 				<View style={styles.content}>
 					<Text style={styles.header} numberOfLines={2}>
 						{data.name}
 					</Text>
-					<Text>Colour: {data.colour}</Text>
+					<Text>Time: {data.time}</Text>
 				</View>
 			</View>
 		</TouchableOpacity>
@@ -28,14 +30,16 @@ function ItemList({ data }) {
 function Dashboard({ navigation }) {
 	return (
 		<View style={styles.waper}>
-			<Header
-				title='Todos'
-			></Header>
+			<Header title='List'>
+			</Header>
 			<FlatList
 				data={data}
 				keyExtractor={(item) => item.id}
-				renderItem={({ item }) => <ItemList data={item}></ItemList>}
-			></FlatList></View>
+				renderItem={({ item }) => (
+					<ItemList navigation={navigation} data={item}></ItemList>
+				)}
+			></FlatList>
+		</View>
 	);
 }
 

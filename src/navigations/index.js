@@ -8,6 +8,7 @@ import {
     LoginScreen,
     Dashboard,
   } from '../screens'
+import Detail from '../screens/Detail'
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ const NavigationApp = () => {
             <Stack.Screen name="StartScreen" component={StartScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="Dashboard" component={Dashboard} />
+            <Stack.Screen name="Detail" component={Detail} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

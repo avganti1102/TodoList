@@ -10,6 +10,7 @@ import {
 import Header from '../components/Header';
 import Todos from '../services/TodoList';
 import BackButton from '../components/BackButton';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 function Detail({ navigation, route }) {
 	const { idTodo } = route.params;
@@ -19,7 +20,6 @@ function Detail({ navigation, route }) {
 		<View style={styles.container}>
 			
 			<Header
-				onBack={() => navigation.goBack()}
 				title={todo.name}
 			></Header><BackButton goBack={navigation.goBack} />
 			<ScrollView>
@@ -38,7 +38,7 @@ function Detail({ navigation, route }) {
 							{todo.description}
 						</Text>
 					</View>
-				</View>
+				</View>				
 			</ScrollView>
 		</View>
 	);
@@ -49,11 +49,17 @@ const styles = StyleSheet.create({
         flex: 1
     },
     content: {
+		marginLeft: 10,
         flex: 1
     },
     item: {
-        marginHorizontal: 16,
-        marginVertical: 8
+        padding: 10,
+		backgroundColor: '#fff',
+		marginVertical: 10,
+		marginHorizontal: 10,
+		flexDirection: 'row',
+		borderRadius: 7,
+		overflow: 'hidden',
     },
     header: {
         fontSize: 20,
@@ -61,7 +67,8 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold'
     },
     info: {
-        fontSize: 15
+        fontSize: 20,
+		marginBottom: 10,
     },
     itemContainer: {
         width: '100%',

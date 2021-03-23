@@ -10,7 +10,7 @@ import Header from "../components/Header";
 import data from "../services/TodoList";
 
 
-function ItemList({ navigation, data }) {
+const ItemList = ({ navigation, data }) => {
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate('Detail', {
 			idTodo: data.id
@@ -30,8 +30,10 @@ function ItemList({ navigation, data }) {
 function Dashboard({ navigation }) {
 	return (
 		<View style={styles.waper}>
-			<Header title='List'>
-			</Header>
+			<Header 
+				title='List'
+				rightComponent={<Text style={styles.create}>+</Text>}
+				rightButton={() => navigation.navigate('Create')}/>
 			<FlatList
 				data={data}
 				keyExtractor={(item) => item.id}
@@ -64,6 +66,13 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		marginBottom: 10,
 	},
+	create: {
+		fontSize: 30,
+		fontWeight: 'bold',
+		position: 'absolute',
+    	top: -20,
+    	right: 30
+	}
 });
 
 export default Dashboard;

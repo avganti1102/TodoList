@@ -1,6 +1,6 @@
 /** @format */
 
-import React from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {
 	View,
 	Text,
@@ -8,34 +8,42 @@ import {
 	StyleSheet,
 } from 'react-native';
 import Header from '../components/Header';
-import Todos from '../services/TodoList';
 import BackButton from '../components/BackButton';
-import { getStatusBarHeight } from 'react-native-status-bar-height';
+import Context from '../screens/Context';
+import { useNavigation} from '@react-navigation/native';
 
-function Detail({ navigation, route }) {
-	const { idTodo } = route.params;
-	const todo = Todos.filter((item) => item.id === idTodo)[0];
+function Detail({route }) {
+	const [data, setData] = useState({});
+	const navigation = useNavigation();
+	const [context, setContext] = useContext(Context);
+
+	const { transData } = route.params;
+
+	useEffect(() => {
+		const data = context.find((item) => item.id === transData.id);
+		console.log(context, data, transData.id)
+		setData(data);
+	}, []);
 
 	return (
 		<View style={styles.container}>
-			
 			<Header
-				title={todo.name}
+				title={data.name}
 			></Header><BackButton goBack={navigation.goBack} />
 			<ScrollView>
 				<View style={styles.content}>
 					<View style={styles.item}>
 						<Text style={styles.header}>Time: </Text>
-						<Text style={styles.info}>{todo.time}</Text>
+						<Text style={styles.info}>{data.time}</Text>
 					</View>
 					<View style={styles.item}>
 						<Text style={styles.header}>Address: </Text>
-						<Text style={styles.info}>{todo.address}</Text>
+						<Text style={styles.info}>{data.address}</Text>
 					</View>
 					<View style={styles.item}>
 						<Text style={styles.header}>Description: </Text>
 						<Text style={styles.info}>
-							{todo.description}
+							{data.description}
 						</Text>
 					</View>
 				</View>				

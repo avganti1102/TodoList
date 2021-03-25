@@ -75,7 +75,6 @@ function Create() {
         <View style={styles.container}>
           <Header title="Add to do" />
           <BackButton goBack={navigation.goBack} />
-          <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={styles.header}>Name</Text>
             <View style={styles.item}>
               <TextInput
@@ -105,12 +104,11 @@ function Create() {
                 errorText={description.error}
               ></TextInput>
             </View>
-            <View>
+            <View style={styles.button}>
               <Button mode="contained" onPress={handleAdd}>
                 Done
               </Button>
             </View>
-          </ScrollView>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -132,6 +130,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
   },
+  button: {
+    paddingLeft: '25%'
+  }
 });
 
 export default Create;

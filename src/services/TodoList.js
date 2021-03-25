@@ -8,18 +8,18 @@ const TodoList = [
     },
     {
         id: 2,
-        name: 'Phỏng vấn Gem corporation',
+        name: 'Gem corporation',
         time: '11h - 12/03/2021',
         address: 'Tòa nhà Handico đường Phạm Hùng',
-        description: 'Phỏng vấn xin việc'
+        description: 'Phỏng vấn xin việc - 14h 13/03/2021'
     },
     {
         id: 3,
-        name: 'Phỏng vấn Newwave Solution',
+        name: 'Newwave Solution',
         time: '11h - 05/03/2021',
         address: 'Cầu Giấy',
-        description: 'Phỏng vấn xin việc'
-    },
+        description: 'Phỏng vấn xin việc - 15h 07/03/2021'
+    }
 ]
 
 export default TodoList;

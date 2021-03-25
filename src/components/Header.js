@@ -8,7 +8,7 @@ function Header({ title, goBack, rightButton, rightComponent }) {
             <StatusBar backgroundColor='#fff' barStyle='dark-content'></StatusBar>
             <View style={styles.container}>
                 {goBack && <TouchableOpacity onPress={goBack} style={styles.back}>
-                    <Text>Back</Text>
+                    <Text>Logout</Text>
                 </TouchableOpacity>}
                 <Text style={styles.title} numberOfLines={1}>{title}</Text>
                 {rightButton && <TouchableOpacity onPress={rightButton} style={styles.right}>

@@ -33,7 +33,7 @@ function Detail({route }) {
 			<ScrollView>
 				<View style={styles.content}>
 					<View style={styles.item}>
-						<Text style={styles.header}>Time: </Text>
+						<Text style={styles.header}>Time Create: </Text>
 						<Text style={styles.info}>{data.time}</Text>
 					</View>
 					<View style={styles.item}>
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		marginVertical: 10,
 		marginHorizontal: 10,
-		flexDirection: 'row',
 		borderRadius: 7,
 		overflow: 'hidden',
     },

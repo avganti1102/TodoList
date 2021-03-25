@@ -10,6 +10,7 @@ import Header from "../components/Header";
 import data from "../services/TodoList";
 import Context from "../screens/Context";
 import {useNavigation} from '@react-navigation/native';
+import BackButton from "../components/BackButton";
 
 const ItemList = ({ data }) => {
 const navigation = useNavigation();
@@ -45,10 +46,11 @@ function Dashboard({ navigation }) {
         title="List"
         rightComponent={<Text style={styles.create}>+</Text>}
         rightButton={() => navigation.navigate("Create")}
+        goBack={() => navigation.navigate("StartScreen")}
       />
       <FlatList
         data={context}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={item => item.id.toString()} //Chỉ định id
         renderItem={({ item }) => (
           <ItemList data={item}></ItemList>
         )}

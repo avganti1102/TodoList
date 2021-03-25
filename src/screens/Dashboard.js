@@ -10,7 +10,6 @@ import Header from "../components/Header";
 import data from "../services/TodoList";
 import Context from "../screens/Context";
 import {useNavigation} from '@react-navigation/native';
-import BackButton from "../components/BackButton";
 
 const ItemList = ({ data }) => {
 const navigation = useNavigation();
